@@ -12,12 +12,10 @@ jobs:
         with:
           path: ./node_modules
           key: modules-${{ hashFiles('package-lock.json') }}
-      - env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npm ci
+      - run: npm ci
       - run: npm ci:test
       - run: npm ci:build
       - run: npm run package
       - env:
-          GITHUB_TOKEN: ${{ secret.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npx auto shipit -d
