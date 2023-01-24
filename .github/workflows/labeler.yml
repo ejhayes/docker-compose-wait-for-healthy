@@ -17,4 +17,3 @@ jobs:
           GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
         with:
           action_asset_url: 'https://github.com/ejhayes/labeler/releases/latest/download/action.tar.gz'
-
