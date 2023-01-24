@@ -14,9 +14,10 @@ jobs:
           key: modules-${{ hashFiles('package-lock.json') }}
       - env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          npm ci
-          npm run ci:test
-          npm run ci:build
-          npm run package
-          npx auto shipit -d
+        run: npm ci
+      - run: npm ci:test
+      - run: npm ci:build
+      - run: npm run package
+      - env:
+          GITHUB_TOKEN: ${{ secret.GITHUB_TOKEN }}
+        run: npx auto shipit -d
