@@ -1,0 +1,46 @@
+{
+  "name": "docker-compose-wait-for-healthy",
+  "version": "1.0.0",
+  "description": "This is a simple action that waits for your docker compose services to be `HEALTHY`",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "rimraf dist && tsc -p tsconfig.build.json",
+    "ci:build": "npm run build && npm run package",
+    "ci:test": "npm run test",
+    "format": "prettier --write .",
+    "lint": "eslint \"{src,test}/**/*.ts\"",
+    "package": "ncc build",
+    "test": "npm run lint && npm run format"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ejhayes/docker-compose-wait-for-healthy.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ejhayes/docker-compose-wait-for-healthy/issues"
+  },
+  "homepage": "https://github.com/ejhayes/docker-compose-wait-for-healthy#readme",
+  "devDependencies": {
+    "@actions/core": "^1.10.0",
+    "@auto-it/all-contributors": "^10.37.6",
+    "@auto-it/first-time-contributor": "^10.37.6",
+    "@auto-it/git-tag": "^10.37.6",
+    "@typescript-eslint/eslint-plugin": "^5.49.0",
+    "@vercel/ncc": "^0.36.0",
+    "action-docs": "^1.1.1",
+    "auto": "^10.37.6",
+    "eslint": "^8.32.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-typescript-sort-keys": "^2.1.0",
+    "prettier": "^2.8.3",
+    "rimraf": "^4.1.2",
+    "typescript": "^4.9.4"
+  },
+  "dependencies": {
+    "source-map-support": "^0.5.21"
+  }
+}
