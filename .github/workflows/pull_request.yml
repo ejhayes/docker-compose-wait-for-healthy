@@ -13,8 +13,8 @@ jobs:
           path: ./node_modules
           key: modules-${{ hashFiles('package-lock.json') }}
       - run: npm ci
-      - run: npm ci:test
-      - run: npm ci:build
+      - run: npm run ci:test
+      - run: npm run ci:build
       - run: npm run package
       - env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
