@@ -3,11 +3,15 @@
 [![All Contributors](https://img.shields.io/badge/all_contributors-0-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
-This is a simple action that waits for your docker compose services to be `HEALTHY`
+<!-- action-docs-description -->
+## Description
+
+This action waits for a docker compose services to be marked as healthy
+<!-- action-docs-description -->
 
 _IMPORTANT_: in order for this to work your container must have a functioning HEALTHCHECK directive. More info on that can be found [here](https://docs.docker.com/engine/reference/builder/#healthcheck).
 
-## using
+## Usage
 
 To use this in your projects do this:
 
@@ -19,6 +23,28 @@ To use this in your projects do this:
     path: relativePathToDockerComposeFile
 ...
 ```
+
+
+
+<!-- action-docs-inputs -->
+## Inputs
+
+| parameter | description | required | default |
+| --- | --- | --- | --- |
+| timeout | amount of time in seconds to wait before failing | `false` | 60 |
+| services | space separate list of services to wait for | `false` |  |
+| path | default path to use | `false` | ${{ github.workspace }} |
+<!-- action-docs-inputs -->
+
+<!-- action-docs-outputs -->
+
+<!-- action-docs-outputs -->
+
+<!-- action-docs-runs -->
+## Runs
+
+This action is a `node16` action.
+<!-- action-docs-runs -->
 
 ## Contributors ✨
 

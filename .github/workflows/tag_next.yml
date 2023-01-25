@@ -1,0 +1,13 @@
+on:
+  push:
+    branches:
+      - releases/next
+
+jobs:
+  verify_action_works:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ejhayes/docker-compose-wait-for-healthy@releases/next
+        with:
+          services: dummy

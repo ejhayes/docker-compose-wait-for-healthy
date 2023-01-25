@@ -1,5 +1,5 @@
 name: 'Docker Compose - Wait for HEALTHY'
-description: 'This action waits for a docker compse services to be marked as healthy'
+description: 'This action waits for a docker compose services to be marked as healthy'
 author: 'Eric Hayes'
 inputs:
   timeout:
