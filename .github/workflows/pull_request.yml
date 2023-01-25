@@ -17,7 +17,7 @@ jobs:
       - run: npm ci
       - run: npm run ci:build
       - run: npm run package
-      - run: npm run ci:test || docker compose ps
+      - run: npm run ci:test
       - env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npx auto shipit -d
