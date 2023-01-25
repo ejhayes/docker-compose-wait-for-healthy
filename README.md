@@ -22,7 +22,7 @@ To use this in your projects do this:
 
 ```
 ...
-- uses: ejhayes/docker-compose-wait-for-healthy@main
+- uses: ejhayes/docker-compose-wait-for-healthy@releases/main
   with:
     services: 'space separate list of services you want to wait for'
     path: relativePathToDockerComposeFile
