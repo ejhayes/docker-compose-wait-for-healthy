@@ -1,0 +1,38 @@
+---
+version: 1
+labels:
+  - label: 'small'
+    size-below: 10
+  - label: 'medium'
+    size-above: 9
+    size-below: 200
+  - label: 'large'
+    size-above: 200
+  - label: 'documentation'
+    files:
+      - '.+.md'
+      - 'assets'
+  - label: 'config'
+    files:
+      - '.github'
+      - '.autorc'
+      - '.eslintrc.js'
+      - '.prettierrc'
+      - 'Dockerfile'
+      - 'docker-compose.yml'
+      - 'nest-cli.json'
+      - 'tsconfig*.json'
+      - '.all-contributorsrc'
+      - 'environments'
+      - 'src/config'
+      - 'probot.env'
+  - label: 'tests'
+    files:
+      - 'test'
+      - '*.spec*'
+  - label: 'dependencies'
+    files:
+      - 'package*.json'
+  - label: 'code'
+    files:
+      - 'src'
