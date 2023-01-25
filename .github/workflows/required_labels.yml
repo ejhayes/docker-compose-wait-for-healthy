@@ -13,4 +13,3 @@ jobs:
           mode: exactly
           count: 1
           labels: 'major,minor,patch,skip-release'
-

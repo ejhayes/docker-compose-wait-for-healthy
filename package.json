@@ -11,7 +11,7 @@
     "lint": "eslint \"{src,test}/**/*.ts\"",
     "package": "ncc build",
     "test": "npm run lint && npm run format",
-    "test:e2e": "docker compose up -d dummy && INPUT_SERVICES=dummy node dist/index.js"
+    "test:e2e": "docker compose up -d dummy && INPUT_PATH=. INPUT_TIMEOUT=10 INPUT_SERVICES=dummy node dist/index.js"
   },
   "repository": {
     "type": "git",

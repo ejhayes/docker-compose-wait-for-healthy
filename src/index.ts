@@ -2,20 +2,23 @@ import 'source-map-support/register';
 
 import { exec, spawn } from 'child_process';
 import { promisify } from 'util';
+import { getInput } from '@actions/core';
 
-const TIMEOUT = Number(process.env.TIMEOUT) || 60;
-const SERVICES = process.env.SERVICES || '';
-const CWD = process.env.CWD || __dirname;
+const INPUTS = {
+  services: getInput('services', { required: false }),
+  path: getInput('path', { required: false }),
+  timeout: Number(getInput('timeout', { required: false })),
+};
 
 async function main() {
   return new Promise<void>((resolve, reject) => {
     const timeoutId = setTimeout(() => {
       reject('Timeout');
       return;
-    }, TIMEOUT * 1000);
+    }, INPUTS.timeout * 1000);
 
     const intervalId = setInterval(async () => {
-      const services = await getServices(SERVICES, CWD);
+      const services = await getServices(INPUTS.timeout, INPUTS.path);
       if (services.length == services.filter((i) => i[1]).length) {
         console.log('Status: All services HEALTHY');
         clearInterval(intervalId);
@@ -61,7 +64,11 @@ async function runCommand(command, cwd) {
   }
 }
 
-const cmd = streamCommand('docker', ['compose', 'logs', '-f', SERVICES], CWD);
+const cmd = streamCommand(
+  'docker',
+  ['compose', 'logs', '-f', INPUTS.services],
+  INPUTS.path,
+);
 main().then(() => {
   // need to make sure all spawned processes are killed
   process.kill(-cmd.pid);
