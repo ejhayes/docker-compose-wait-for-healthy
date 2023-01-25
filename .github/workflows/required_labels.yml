@@ -1,4 +1,4 @@
-name: PR Version Labels
+name: Required Labels
 on:
   pull_request:
     types: [opened, labeled, unlabeled]

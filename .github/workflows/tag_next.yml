@@ -1,3 +1,5 @@
+name: Smoke Test 'next' release
+
 on:
   push:
     branches:
