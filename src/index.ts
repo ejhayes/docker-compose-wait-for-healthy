@@ -18,7 +18,7 @@ async function main() {
     }, INPUTS.timeout * 1000);
 
     const intervalId = setInterval(async () => {
-      const services = await getServices(INPUTS.timeout, INPUTS.path);
+      const services = await getServices(INPUTS.services, INPUTS.path);
       if (services.length == services.filter((i) => i[1]).length) {
         info('Status: All services HEALTHY');
         clearInterval(intervalId);
