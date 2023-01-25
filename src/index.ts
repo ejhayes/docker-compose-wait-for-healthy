@@ -36,12 +36,16 @@ async function main() {
 }
 
 async function getServices(services, cwd) {
-  const res = await runCommand(`docker compose ps ${services}`, cwd);
+  const cmd = await runCommand(`docker compose ps ${services}`, cwd);
+
+  // find indexes we care about
+  const res = cmd.trim().split('\n');
+  const headers = res[0].split(/\s{3,}/);
+
   return res
-    .trim()
-    .split('\n')
     .slice(1)
-    .map((i) => i.split(/\s{3,}/).slice(2, 4))
+    .map((i) => i.split(/\s{3,}/))
+    .map((i) => [i[headers.indexOf('SERVICE')], i[headers.indexOf('STATUS')]])
     .map((i) => [i[0], i[1].search(/healthy/i) >= 0]);
 }
 
