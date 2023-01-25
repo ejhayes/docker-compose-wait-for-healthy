@@ -10,6 +10,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          mode: exactly
+          mode: minimum
           count: 1
           labels: 'major,minor,patch,skip-release,internal,documentation,tests,performance'
