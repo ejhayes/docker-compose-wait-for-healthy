@@ -2,7 +2,7 @@ import 'source-map-support/register';
 
 import { exec, spawn } from 'child_process';
 import { promisify } from 'util';
-import { getInput } from '@actions/core';
+import { getInput, error, info } from '@actions/core';
 
 const INPUTS = {
   services: getInput('services', { required: false }),
@@ -20,12 +20,12 @@ async function main() {
     const intervalId = setInterval(async () => {
       const services = await getServices(INPUTS.timeout, INPUTS.path);
       if (services.length == services.filter((i) => i[1]).length) {
-        console.log('Status: All services HEALTHY');
+        info('Status: All services HEALTHY');
         clearInterval(intervalId);
         clearTimeout(timeoutId);
         resolve();
       } else {
-        console.log(
+        info(
           `Status: ${services.filter((i) => i[1]).length}/${
             services.length
           } services are HEALTHY`,
@@ -69,7 +69,13 @@ const cmd = streamCommand(
   ['compose', 'logs', '-f', INPUTS.services],
   INPUTS.path,
 );
-main().then(() => {
-  // need to make sure all spawned processes are killed
-  process.kill(-cmd.pid);
-});
+main()
+  .then(() => {
+    // need to make sure all spawned processes are killed
+    process.kill(-cmd.pid);
+  })
+  .catch((err) => {
+    error(err);
+    process.kill(-cmd.pid);
+    process.exit(1);
+  });
