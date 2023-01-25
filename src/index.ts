@@ -2,7 +2,7 @@ import 'source-map-support/register';
 
 import { exec, spawn } from 'child_process';
 import { promisify } from 'util';
-import { getInput, error, info } from '@actions/core';
+import { error, getInput, info } from '@actions/core';
 
 const INPUTS = {
   services: getInput('services', { required: false }),
@@ -57,7 +57,7 @@ function streamCommand(command, args, cwd) {
 
 async function runCommand(command, cwd) {
   try {
-    const { stdout, stderr } = await promisify(exec)(command, { cwd });
+    const { stdout } = await promisify(exec)(command, { cwd });
     return `${stdout}`;
   } catch (err) {
     throw err;
