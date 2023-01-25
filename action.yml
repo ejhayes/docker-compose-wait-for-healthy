@@ -1,0 +1,19 @@
+name: 'Docker Compose - Wait for HEALTHY'
+description: 'This action waits for a docker compose services to be marked as healthy'
+author: 'Eric Hayes'
+inputs:
+  timeout:
+    description: amount of time in seconds to wait before failing
+    default: 60
+    required: false
+  services:
+    description: space separate list of services to wait for
+    default: ''
+    required: false
+  path:
+    description: default path to use
+    default: ${{ github.workspace }}
+    required: false
+runs:
+  using: 'node16'
+  main: 'dist/index.js'
