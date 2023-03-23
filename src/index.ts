@@ -74,12 +74,14 @@ const cmd = streamCommand(
   INPUTS.path,
 );
 main()
-  .then(() => {
-    // need to make sure all spawned processes are killed
-    process.kill(-cmd.pid);
-  })
   .catch((err) => {
     error(err);
+    // make an attempt to kill the process
+    process.kill(-cmd.pid);
+    process.exit(1);
+  })
+  .then(() => {
+    // attempt to kill the process then kill the process
     process.kill(-cmd.pid);
     process.exit(0);
   });
