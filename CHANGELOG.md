@@ -1,3 +1,18 @@
+# v1.0.2 (Thu Mar 23 2023)
+
+#### 🐛 Bug Fix
+
+- ESRCH error graceful handling [#37](https://github.com/ejhayes/docker-compose-wait-for-healthy/pull/37) ([@ejhayes](https://github.com/ejhayes))
+
+#### 📝 Documentation
+
+
+#### Authors: 1
+
+- Eric Hayes ([@ejhayes](https://github.com/ejhayes))
+
+---
+
 # v1.0.1 (Thu Mar 23 2023)
 
 #### 🐛 Bug Fix
