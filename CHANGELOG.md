@@ -1,3 +1,15 @@
+# v1.0.1 (Thu Mar 23 2023)
+
+#### 🐛 Bug Fix
+
+- ESRCH graceful error handling when log process is already dead [#35](https://github.com/ejhayes/docker-compose-wait-for-healthy/pull/35) ([@ejhayes](https://github.com/ejhayes))
+
+#### Authors: 1
+
+- Eric Hayes ([@ejhayes](https://github.com/ejhayes))
+
+---
+
 # v1.0.0 (Wed Jan 25 2023)
 
 #### 💥 Breaking Change
