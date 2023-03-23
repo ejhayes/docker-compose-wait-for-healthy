@@ -2,13 +2,21 @@ import 'source-map-support/register';
 
 import { exec, spawn } from 'child_process';
 import { promisify } from 'util';
-import { error, getInput, info } from '@actions/core';
+import { error, getInput, info, warning } from '@actions/core';
 
 const INPUTS = {
   services: getInput('services', { required: false }),
   path: getInput('path', { required: false }),
   timeout: Number(getInput('timeout', { required: false })),
 };
+
+function kill(pid) {
+  try {
+    process.kill(pid);
+  } catch (err) {
+    warning(err);
+  }
+}
 
 async function main() {
   return new Promise<void>((resolve, reject) => {
@@ -77,11 +85,11 @@ main()
   .catch((err) => {
     error(err);
     // make an attempt to kill the process
-    process.kill(-cmd.pid);
+    kill(-cmd.pid);
     process.exit(1);
   })
   .then(() => {
     // attempt to kill the process then kill the process
-    process.kill(-cmd.pid);
+    kill(-cmd.pid);
     process.exit(0);
   });
