@@ -81,5 +81,5 @@ main()
   .catch((err) => {
     error(err);
     process.kill(-cmd.pid);
-    process.exit(1);
+    process.exit(0);
   });
